@@ -9,6 +9,9 @@ app.set('port',3030)
 //Middlewares
 app.use(express.json());
 
+//Rutas
+app.use(require('./src/routing'));
+
 //Servidor
 app.listen(app.get('port'), () => {
 	console.log(`Server active on : ${app.get('port')}`);
