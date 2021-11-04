@@ -11,4 +11,14 @@ async function actualizar(req,res){
     })
     return producto
 };
-module.exports = actualizar;
+//Usuario
+const User = require('../modelos/user')
+async function actualizarUser(req,res){
+    const usuario = await User.updateOne({_id:req.params.id},{
+        name: req.body.name,
+        userName:req.body.userName,
+        contrasena:req.body.contrasena
+    })
+    return usuario
+};
+module.exports = {actualizar,actualizarUser};

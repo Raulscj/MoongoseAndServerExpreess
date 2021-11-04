@@ -1,9 +1,9 @@
 const {Router} = require('express'); 
 const router = Router();
 const {create, createUser} = require('../CRUD/create');
-const eliminar = require ('../CRUD/delete');
+const {deleteProducto,deleteUser} = require ('../CRUD/delete');
 const {buscar, buscarUser} = require('../CRUD/find');
-const actualizar = require('../CRUD/update');
+const {actualizar, actualizarUser} = require('../CRUD/update');
 
 router.get('/Producto/params/:atributo/:dato', (req,res)=>{
 	buscar(req,res)
@@ -19,7 +19,7 @@ router.post('/Producto', (req,res)=>{
 });
 
 router.delete('/Producto/params/:id', (req,res)=>{
-    eliminar(req.params.id)
+    deleteProducto(req.params.id)
 	.then( _ => res.send('Producto eliminado de la base de datos, satisfactoriamente.')) 
 	.catch(err => console.log(err))
 })
@@ -43,15 +43,15 @@ router.post('/Usuario', (req,res)=>{
 	.catch(err => console.log(err))
 });
 
-router.delete('/Producto/params/:id', (req,res)=>{
-    eliminar(req.params.id)
-	.then( _ => res.send('Producto eliminado de la base de datos, satisfactoriamente.')) 
+router.delete('/Usuario/params/:id', (req,res)=>{
+    deleteUser(req.params.id)
+	.then( _ => res.send('Usuario eliminado de la base de datos, satisfactoriamente.')) 
 	.catch(err => console.log(err))
 })
 
-router.put('/Producto/params/:id',(req,res)=>{
-	actualizar(req,res)
-	.then(producto => res.send(producto))
+router.put('/Usuario/params/:id',(req,res)=>{
+	actualizarUser(req,res)
+	.then(usuario => res.send(usuario))
 	.catch(err =>console.log(err))
 });
 module.exports= router;
