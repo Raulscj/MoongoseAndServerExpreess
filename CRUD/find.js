@@ -39,4 +39,29 @@ async function buscar(req,res){
     }
     return producto;
 };
-module.exports = buscar;
+//Usuario
+const User = require('../modelos/user')
+async function buscarUser(req,res){
+    let usuario;
+    switch(req.params.atributo){
+        case "name":
+            usuario = await User.find({name:req.params.dato})
+            .then(usuario => console.log(usuario))
+            .catch(err => console.log(err));
+            break;
+        case "userName":
+            usuario = await User.find({userName:req.params.dato})
+            .then(usuario => console.log(usuario))
+            .catch(err => console.log(err));
+            break;
+        case "id":
+            usuario = await User.find({_id:req.params.dato})
+            .then(usuario => console.log(usuario))
+            .catch(err => console.log(err));
+            break;
+        default:
+            res.send('El atributo de usuario que busca, no se encuentra en el sistema, por favor intente con alguna de est [name,userName,id]')
+    }
+    return usuario;
+};
+module.exports = {buscar,buscarUser};
