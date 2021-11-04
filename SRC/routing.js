@@ -4,11 +4,20 @@ const {create, createUser} = require('../CRUD/create');
 const {deleteProducto,deleteUser} = require ('../CRUD/delete');
 const {buscar, buscarUser} = require('../CRUD/find');
 const {actualizar, actualizarUser} = require('../CRUD/update');
+const verificar = require('../CRUD/verificar')
 
-router.get('/Producto/params/:atributo/:dato', (req,res)=>{
-	buscar(req,res)
-	.then(producto => res.send('Los productos encontrados se encuentran en la consola.')) 
-	.catch(err => console.log(err))
+router.get('/Producto/params/:user/:clave/:atributo/:dato', (req,res)=>{
+	
+		verificar(req,res)
+		.then(acceso=>{
+			if(acceso){
+				buscar(req,res)
+				.then(producto => res.send('Los productos encontrados se encuentran en la consola.')) 
+				.catch(err => console.log(err))}
+			else{
+				res.send('Usuario Invalido');
+			}
+		})
 	})
 	
 router.post('/Producto', (req,res)=>{
