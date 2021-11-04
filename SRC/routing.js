@@ -25,7 +25,7 @@ router.delete('/Producto/params/:id', (req,res)=>{
 })
 //AQUI QUEDE
 router.put('/Producto/params/:id',(req,res)=>{
-	actualizar(req.params.id)
+	actualizar(req,res)
 	.then(producto => res.send(producto))
 	.catch(err =>console.log(err))
 });
