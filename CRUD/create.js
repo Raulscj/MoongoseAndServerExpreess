@@ -1,13 +1,13 @@
 require('../conexion');
 const Producto = require('../modelos/Producto');
 //Vincular con las clases
-async function create(){
+async function create(res,req){
     const producto = new Producto({
-        name:'teclado',
-        marca:'hp',
-        modelo:'rgb',
-        descripcion: 'Gamer',
-        precio: 150
+        tipo: req.body.tipo,
+        marca:req.body.marca,
+        modelo:req.body.modelo,
+        descripcion: req.body.descripcion,
+        precio: req.body.precio
     });
     const producto_guardado = await producto.save();
     return producto_guardado;

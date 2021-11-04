@@ -5,8 +5,10 @@ const eliminar = require ('../CRUD/delete');
 const buscar = require('../CRUD/find');
 const actualizar = require('../CRUD/update');
 
-router.get('/Producto', (req,res)=>{
-	crear()
+
+router.post('/Producto', (req,res)=>{
+	console.log(req.body)
+	crear(res,req)
 	.then(producto_guardado => res.send(producto_guardado)) 
 	.catch(err => console.log(err))
 });
