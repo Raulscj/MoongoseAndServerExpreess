@@ -64,7 +64,7 @@ router.get('/Usuario/params/:user/:clave/:atributo/:dato', (req,res)=>{
 	.then(acceso=>{
 		if(acceso){
 			buscarUser(req,res)
-			.then(usuario => res.send('El usuario buscado se encuentran en la consola.')) 
+			.then(usuario => res.send('El usuario buscado se encuentra en la consola.')) 
 			.catch(err => console.log(err))
 		}else{
 			res.send('Usuario Invalido');
