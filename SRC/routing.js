@@ -6,6 +6,9 @@ const {buscar, buscarUser} = require('../CRUD/find');
 const {actualizar, actualizarUser} = require('../CRUD/update');
 const verificar = require('../CRUD/verificar')
 
+router.get('/',(req,res)=>{
+	res.render("principal");
+})
 router.get('/Producto/params/:user/:clave/:atributo/:dato', (req,res)=>{
 		verificar(req,res)
 		.then(acceso=>{
